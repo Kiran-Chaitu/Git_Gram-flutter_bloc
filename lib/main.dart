@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:git_gram/bloc/search/bloc/search_bloc.dart';
 import 'package:git_gram/config/Routes/route_names.dart';
 import 'package:git_gram/config/Routes/routes.dart';
 import 'package:git_gram/repository/user/user_api_repository.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: "lib/utils/.env");
   runApp(const MyCore());
 }
 
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       initialRoute: RouteNames.searchScreen,
-      onGenerateRoute:Routes.generateRoute,
+      onGenerateRoute: Routes.generateRoute,
     );
   }
 }
