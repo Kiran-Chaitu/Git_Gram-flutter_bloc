@@ -7,14 +7,14 @@ import '../../../bloc/search/bloc/search_bloc.dart';
 class SearchBarWidget extends StatefulWidget {
   final FocusNode focusNode;
   final TextEditingController userController;
-  const SearchBarWidget({super.key , required this.focusNode , required this.userController});
+  const SearchBarWidget(
+      {super.key, required this.focusNode, required this.userController});
 
   @override
   State<SearchBarWidget> createState() => _SearchBarWidgetState();
 }
 
 class _SearchBarWidgetState extends State<SearchBarWidget> {
-
   Future<void> onSearch() async {
     if (widget.userController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -39,6 +39,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         }
       },
       child: TextField(
+        textInputAction: TextInputAction.done,
+        onSubmitted: (value) async {
+          await onSearch();
+        },
         controller: widget.userController,
         decoration: InputDecoration(
           hintText: "Enter UserName...",
