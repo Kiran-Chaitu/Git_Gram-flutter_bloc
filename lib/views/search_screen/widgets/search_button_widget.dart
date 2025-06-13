@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:git_gram/config/Routes/route_names.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -50,6 +51,7 @@ class _SearchButtonWidgetState extends State<SearchButtonWidget> {
           ),
           child: GestureDetector(
             onTap: () async {
+              debugPrint(dotenv.env['GIT_TOKEN'].toString());
               if (widget.userController.text.trim().isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -59,7 +61,7 @@ class _SearchButtonWidgetState extends State<SearchButtonWidget> {
                 );
                 return;
               }
-             
+
               context.read<SearchBloc>().add(
                     SearchButton(userName: widget.userController.text.trim()),
                   );

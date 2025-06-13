@@ -7,7 +7,7 @@ import 'package:git_gram/config/Routes/routes.dart';
 import 'package:git_gram/repository/user/user_api_repository.dart';
 
 void main() async {
-  await dotenv.load(fileName: "lib/utils/.env");
+  await dotenv.load(fileName: "assets/.env");
   runApp(const MyCore());
 }
 

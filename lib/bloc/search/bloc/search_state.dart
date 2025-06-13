@@ -16,6 +16,7 @@ class SearchState extends Equatable {
     );
   }
 
+  
   @override
   List<Object?> get props => [serchStatus, userApiResponse , userReposResponse];
 }
